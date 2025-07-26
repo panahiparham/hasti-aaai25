@@ -6,7 +6,7 @@ if __name__ == '__main__':
     candidate_ns = [10, 50, 100]
 
     # Load the results
-    with open('results.pickle', 'rb') as f:
+    with open('results.pkl', 'rb') as f:
         results = pickle.load(f)
 
     # Plotting

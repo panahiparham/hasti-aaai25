@@ -12,5 +12,5 @@ wheels/
 uv.lock
 .python-version
 
-*.pickle
+*.pkl
 *.png

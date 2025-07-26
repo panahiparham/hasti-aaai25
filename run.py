@@ -4,7 +4,6 @@ import pickle
 import cvxpy as cp
 import numpy as np
 import scipy
-import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 def integral_first(x, original_opt, r, c):
@@ -116,24 +115,5 @@ if __name__ == '__main__':
         results[f'cont_relax_{candidate_n}'] = get_continuous_relaxation(candidate_n)
 
     # Save the results
-    with open('results.pickle', 'wb') as f:
+    with open('results.pkl', 'wb') as f:
         pickle.dump(results, f)
-
-    # Plotting
-    plt.plot(results['randomized'][0], results['randomized'][1], label = "R-WnA", linestyle='-', markersize=4)
-    plt.plot(results['deterministic'][0], results['deterministic'][1], label = "D-WnA", linestyle='--', markersize=4)
-
-    for candidate_n in candidate_ns:
-        plt.plot(
-            results[f'cont_relax_{candidate_n}'][0],
-            results[f'cont_relax_{candidate_n}'][1],
-            label = "Cont. Relaxation",
-            linestyle=':',
-            linewidth=2,
-        )
-
-    plt.title("Robustness Consistency Curves Deterministic/Randomized")
-    plt.xlabel("Consistency", size = 15)
-    plt.ylabel("Robustness", size = 15)
-    plt.legend(fontsize = 10)
-    plt.show()
