@@ -56,8 +56,8 @@ def get_consistency_robustness(randomized: bool):
     y = []
     for c in np.arange(1, 5, 0.2):
         consistency, robustness = calc_consistency_robustness(1, c, randomized)
-        x.append(consistency)
-        y.append(robustness)
+        x.append(float(consistency))
+        y.append(float(robustness))
 
     return x, y
 
@@ -94,8 +94,8 @@ def get_continuous_relaxation(candidate_n: int):
             else:
                 win_probs.append(0)
 
-        avg_x.append(np.mean(win_probs))
-        avg_y.append(1 / (lam * np.e))
+        avg_x.append(float(np.mean(win_probs)))
+        avg_y.append(float(1 / (lam * np.e)))
 
     return avg_x, avg_y
 
